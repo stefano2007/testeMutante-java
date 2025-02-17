@@ -1,6 +1,7 @@
 package com.demo.testeMutacao.service;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.ArgumentMatchers.eq;
 import static org.mockito.Mockito.*;
@@ -38,10 +39,34 @@ public class PedidoServiceTest {
     @Test
     public void testCriarPedido() {
         //Arrange
+        Integer usuarioId = 125;
+        CriarPedidoDTO criarPedidoDTO = new CriarPedidoDTO("Caneta", 1,
+                BigDecimal.valueOf(2.00), usuarioId);
+
+        //Act
+        var resultado = pedidoService.criarPedido(criarPedidoDTO);
+
+        //Assert
+        assertNotNull(resultado);
+        assertEquals(StatusPedido.CRIADO, resultado.statusPedido());
+    }
+
+
+
+
+
+
+/*
+   //BUG: var novoValor = pedido.getValor().multiply(BigDecimal.valueOf(1.1));
+   //     pedido.setValor(novoValor);
+
+    @Test
+    public void testCriarPedidoCompleto() {
+        //Arrange
         Long idPedido = 123l;
         Integer usuarioId = 125;
         CriarPedidoDTO criarPedidoDTO = new CriarPedidoDTO("Caneta", 1,
-                BigDecimal.valueOf(1.50), usuarioId);
+                BigDecimal.valueOf(2.00), usuarioId);
 
         doAnswer(invocation -> {
             Pedido p = invocation.getArgument(0);
@@ -50,7 +75,7 @@ public class PedidoServiceTest {
         }).when(pedidoRepository).save(any(Pedido.class));
 
         //Act
-        PedidoDTO pedidoDTO = pedidoService.criarPedido(criarPedidoDTO);
+        var resultado = pedidoService.criarPedido(criarPedidoDTO);
 
         //Assert
         verify(pedidoRepository).save(any(Pedido.class));
@@ -58,6 +83,13 @@ public class PedidoServiceTest {
                 eq(MessageFormat.format("Seu pedido foi criado, Pedido n°: {0}",
                         idPedido)));
 
-        assertEquals(StatusPedido.CRIADO, pedidoDTO.statusPedido());
+        assertEquals(StatusPedido.CRIADO, resultado.statusPedido());
+
+        assertEquals(idPedido, resultado.id());
+        assertEquals(criarPedidoDTO.produto(), resultado.produto());
+        assertEquals(criarPedidoDTO.quantidade(), resultado.quantidade());
+        assertEquals(criarPedidoDTO.valor(), resultado.valor());
     }
+    */
+
 }
