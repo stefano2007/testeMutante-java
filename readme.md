@@ -5,6 +5,7 @@ Este projeto tem como objetivo calcular a média de duas notas fornecidas pelo u
 - Aprovado: Média maior ou igual a 7
 - Recuperação: Média maior ou igual a 5 e menor que 7
 - Reprovado: Média menor que 5
+- Deve valida a nota enviada esteja entre 0 e 10, caso contrario enviar a mensagem "Nota invalida, deve ser entre 0 e 10"
 
 O projeto utiliza Java Spring para a implementação do serviço de cálculo de média e PITest para testes de mutação.
 

@@ -1,5 +1,6 @@
 package com.demo.testeMutacao.controller;
 
+import com.demo.testeMutacao.exceptions.NotaInvalidaException;
 import com.demo.testeMutacao.model.CalcularMediaDTO;
 import com.demo.testeMutacao.service.CalculadoraService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,6 +19,10 @@ public class CalculadoraController {
 
     @PostMapping("calcular-media")
     public ResponseEntity<String> calcularMedia(@RequestBody CalcularMediaDTO request) {
-        return ResponseEntity.ok(calculadoraService.calcularMedia(request));
+        try {
+            return ResponseEntity.ok(calculadoraService.calcularMedia(request));
+        } catch (NotaInvalidaException e){
+            return ResponseEntity.badRequest().body(e.getMensagemError());
+        }
     }
 }

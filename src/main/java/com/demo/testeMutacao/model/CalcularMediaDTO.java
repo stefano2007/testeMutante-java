@@ -1,4 +1,4 @@
 package com.demo.testeMutacao.model;
 
-public record CalcularMediaDTO(Integer nota1, Integer nota2) {
+public record CalcularMediaDTO(Double nota1, Double nota2) {
 }
