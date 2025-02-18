@@ -6,10 +6,8 @@ import java.text.MessageFormat;
 
 @Service
 public class NotificacaoService {
-    public void enviarNotificacao(Integer usuarioId, String mensagem){
-        var montaMensagemCompleta = MessageFormat.format("mensagem: {0} para o usuario: {1}",
-                        mensagem, usuarioId);
-
-        System.out.println(montaMensagemCompleta);
+    public void enviarNotificacao(Integer usuarioId, String mensagem) {
+        System.out.println(MessageFormat.format("mensagem: {0}", mensagem));
+        System.out.println(MessageFormat.format("Para o usuario: {1}", usuarioId));
     }
 }

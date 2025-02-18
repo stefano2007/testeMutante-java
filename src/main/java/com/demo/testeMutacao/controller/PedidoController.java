@@ -1,9 +1,7 @@
 package com.demo.testeMutacao.controller;
 
-import com.demo.testeMutacao.model.CalcularMediaDTO;
 import com.demo.testeMutacao.model.dto.CriarPedidoDTO;
 import com.demo.testeMutacao.model.dto.PedidoDTO;
-import com.demo.testeMutacao.service.CalculadoraService;
 import com.demo.testeMutacao.service.PedidoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
